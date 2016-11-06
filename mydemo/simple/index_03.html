@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01</title>
+</head>
+<body>
+	<div id="demo">
+	</div>
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<script src="../build/browser.min.js"></script>
+	<script type="text/babel">
+	var arr = [<p>直接插入数组变量</p>,<p>把数组中的全部值循环出来</p>]
+		ReactDOM.render(
+			<div>{arr}</div>,
+			document.getElementById('demo')
+		);
+	</script>
+</body>
+</html>

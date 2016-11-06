@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>设置默认属性</title>
+</head>
+<body>
+	<div id="demo">
+	</div>
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<script src="../build/browser.min.js"></script>
+	<script type="text/babel">
+	var Title = React.createClass({
+		getDefaultProps : function(){
+			return {
+				title : ' reactjs'
+			}
+		},
+		render : function(){
+			return <span>awesome{this.props.title}</span>
+		}
+	})
+
+	ReactDOM.render(
+		<Title/>,
+		document.getElementById('demo')
+	)
+	</script>
+</body>
+</html>

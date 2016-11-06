@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>生命周期</title>
+</head>
+<body>
+	<div id="demo">
+	</div>
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<script src="../build/browser.min.js"></script>
+	<script type="text/babel">
+	var Bling = React.createClass({
+		getInitialState : function(){
+			return {
+				opacity : 1.0
+			};
+		},
+		componentDidMount : function(){
+			this.timer = setInterval(function(){
+				var opacity = this.state.opacity;
+				opacity -= .05;
+				if(opacity<.1){
+					opacity = 1;
+				} 
+				this.setState({
+					opacity : opacity
+				})
+			}.bind(this),100)
+		},
+		render : function(){
+			return(
+				<div style={{opacity : this.state.opacity}}>
+				//这是因为 React 组件样式是一个对象，所以第一重大括号表示这是 JavaScript 语法，第二重大括号表示样式对象
+					Hello {this.props.name}
+				</div>
+			);
+		}
+	});
+
+	ReactDOM.render(
+		<Bling name='Spring'/>,
+		document.body
+	);
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>找到真实的DOM</title>
+</head>
+<body>
+	<div id="example">
+	</div>
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<script src="../build/browser.min.js"></script>
+	<script type="text/babel">
+	var LikeButton = React.createClass({
+		getInitialState : function(){ //定义初始状态
+			return {liked : false};
+		},
+		handleClick : function(event){
+			this.setState({liked : !this.state.liked})
+			//setState用于改变state值
+		},
+		render : function(){
+			var text = this.state.liked ? 'liked' : 'haven\'t liked';
+			//this.state 用于读取state值
+			return (
+				<p onClick={this.handleClick}>
+				you {text} this.
+				</p>
+			)
+		}
+	})
+
+	ReactDOM.render(
+		<LikeButton/>,
+		document.getElementById('example')
+	);
+
+	</script>
+</body>
+</html>

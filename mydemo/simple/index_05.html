@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件类</title>
+</head>
+<body>
+	<div id="demo">
+	</div>
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<script src="../build/browser.min.js"></script>
+	<script type="text/babel">
+	var Weather = React.createClass({
+		render : function(){
+			return (
+				<ul>
+				{
+					React.Children.map(this.props.children,function(child){
+						return <li>{child}</li>
+					})
+				}
+				</ul>
+			);
+		}
+	});
+	ReactDOM.render(
+		<Weather>
+			<span>晴天</span>
+			<span>小雨</span>
+			<span>大雨</span>
+			<span>雾霾</span>
+		</Weather>,
+		document.getElementById('demo')
+	)
+	</script>
+</body>
+</html>

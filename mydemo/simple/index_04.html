@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件类</title>
+</head>
+<body>
+	<div id="demo">
+	</div>
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<script src="../build/browser.min.js"></script>
+	<script type="text/babel">
+	var Weather = React.createClass({
+		render : function(){
+			return <ul>
+			 			<li>今天天气 {this.props.today}</li>
+			 			<li>明天天气 {this.props.tomorrow}</li>
+			 			<li>后天天气 {this.props.after}</li>
+			 		</ul>;
+		}
+	});
+	ReactDOM.render(
+		<Weather today="晴天" tomorrow="雨" after="雾霾"/>,
+		document.getElementById('demo')
+	)
+	</script>
+</body>
+</html>
