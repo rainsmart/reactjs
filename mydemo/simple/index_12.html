@@ -7,12 +7,44 @@
 <body>
 	<div id="demo">
 	</div>
-	<script src="jquery.min.js"></script>
+	<script src="../build/jquery.min.js"></script>
 	<script src="../build/react.js"></script>
 	<script src="../build/react-dom.js"></script>
 	<script src="../build/browser.min.js"></script>
 	<script type="text/babel">
-	
+		var Infor = React.createClass({
+			getInitialState : function(){
+				return{
+					filename : '',
+					des : '',
+					owner : ''
+				};
+			},
+			componentDidMount : function(){
+				$.get(this.props.source,function(result){
+					var data = result[0];
+					this.setState({
+						filename : data.id,
+						des : data.files.description,
+						owner : data.owner.login
+					})
+				}.bind(this))
+			},
+			render : function(){
+				return(
+					<div>
+						<span>文件名：{this.state.filename}</span>
+						<span>描述：{this.state.des}</span>
+						<span>作者：{this.state.owner}</span>
+					</div>
+				)
+			}
+		})
+
+		ReactDOM.render(
+			<Infor source="https://api.github.com/users/octocat/gists"/>,
+			document.getElementById('demo')
+		)
 	</script>
 </body>
 </html>
